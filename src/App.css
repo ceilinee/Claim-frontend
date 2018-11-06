@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Lobster|Raleway:200,400,900|Roboto');
+
+.App {
+  text-align: center;
+}
+.box6{
+  width: 100%;
+  height: 35px;
+  background-color: #e9ebef;
+  /* align-self: center; */
+  margin: auto;
+  text-align: left;
+  padding-top: 20px;
+  color: black;
+  margin-top:-35px;
+}
+.align{
+  display: flex;
+  margin-left: 250px;
+  margin-top: -50px;
+}
+.header {
+  background-color: black;
+  top:0px;
+  bottom:0px;
+  height:150px;
+}
+.university {
+  height: 30px;
+  padding-right: 5px;
+  margin-bottom: -15px;
+}
+.card{
+  height:70px;
+}
+.logo{
+  height: 15px;
+  display: block;
+  /* float: right; */
+  /* right: 20px; */
+  /* top: 0px; */
+  margin-top: -15px;
+  margin-left: 70px;
+}
+.powered{
+  margin-left: 33px;
+  font-size: 13px;
+}
+.headerlogo{
+  color:black;
+  font-size: 30px;
+  padding:50px;
+  background-color:white;
+}
+.links{
+  color: black;
+  padding-top: 20px;
+  text-align: left;
+  padding-bottom: 5px;
+  padding-left: 45px;
+  background-color: white;
+  /* bottom: 0px; */
+  height: 50px;
+  /* margin-top: 10px; */
+  min-width: 1000px;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 20px;
+}
+.load-blue{
+  height: 5px;
+  width: 5px;
+  background-color: grey;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 8px;
+}
+.load-green{
+  height: 5px;
+  width: 5px;
+  background-color: #8BC34A;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 8px;
+}
+.selection{
+  margin: 10px;
+  padding: 4px;
+  border-radius: 5px;
+  color: black;
+  text-decoration: none;
+  margin-left: 40px;
+  font-size: 15px;
+  margin-right: -30px;
+  /* padding-bottom: 10px; */
+}.selection:hover{
+  cursor: pointer;
+  background-color: #03A9F4;
+  color:white;
+  padding: 4px;
+  border-radius: 5px;
+}
+.profile{
+  float: right;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-right: 30px;
+}
+.selected{
+  margin: 10px;
+  padding: 4px;
+  border-radius: 5px;
+  color: white;
+  background-color:#03A9F4;
+  text-decoration: none;
+  margin-left: 40px;
+  font-size: 15px;
+  margin-right: -30px;
+  /* padding-bottom: 10px; */
+}
+.two {
+  padding-top:40px;
+  background-color:#e9ebef;
+  min-height: 1000px;
+  min-width: 1000px;
+  font-family: roboto;
+}
+.Headshot {
+  background-image: url(head.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+  height: 200px;
+  width: 200px;
+  /* float: left; */
+  border-radius: 50%;
+  /* margin-left: 70px; */
+  border: 4px solid #020200;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.title {
+  margin-left: 40px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight:400;
+  margin-top: -3px;
+}
+.answer {
+  margin-left: 40px;
+  font-size: 13px;
+  font-weight:400;
+}
+.box {
+  width: 90%;
+  height: 75px;
+  background-color: #d9dde0;
+  /* align-self: center; */
+  margin: auto;
+  text-align: left;
+  padding-top: 20px;
+  color: black;
+  border: 1px solid #c7c7c7;
+}
+.box2 {
+  width: 90%;
+  background-color: #ffffff;
+  /* align-self: center; */
+  margin: auto;
+  text-align: left;
+  padding-top: 20px;
+  color: black;
+}
+.box3 {
+  width: 90%;
+  height: 30px;
+  background-color: #d9dde0;
+  /* align-self: center; */
+  margin: auto;
+  text-align: left;
+  padding-top: 13px;
+  color: black;
+  border: 1px solid #d6d6d6;
+}
+.box4{
+  width: 90%;
+  height: 40px;
+  background-color: #e9ebef;
+  /* align-self: center; */
+  margin: auto;
+  text-align: left;
+  color: black;
+}
+.box5{
+  width: 100%;
+  height: 35px;
+  background-color: #e9ebef;
+  /* align-self: center; */
+  margin: auto;
+  text-align: left;
+  padding-top: 20px;
+  color: black;
+}
+#modal{
+  height:100%;
+  width: 100%;
+  background-color: rgba(15, 23, 29, 0.5490196078431373);
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  position: fixed;
+}
+#modal-background{
+  height: 700px;
+  width: 970px;
+  background-color: white;
+  margin: auto;
+  margin-top: 20px;
+}
+.chevron{
+  float: right;
+  margin-right: 30px;
+  margin-top:-5px;
+}
+.information {
+  font-size:15px;
+}
+#issued {
+  width: 96%;
+}
+#policy td, #policy th {
+  padding-left: 0px;
+  padding-right:35px;
+  font-weight:400
+}
+#issued td {
+  padding: 9px;
+  font-weight:400;
+}
+#issued th {
+  padding: 10px;
+  font-weight: 400;
+  background-color: #e9ebee;
+  width: 10%;
+}
+#claims {
+  width: 96%;
+}
+#claims td {
+    padding: 15px;
+    font-weight:400;
+    background-color: rgba(255, 0, 0, 0.4313725490);
+}
+#claims tbody tr:2 td {
+    background-color: #81DAF5;
+}
+
+.french{
+  margin-right: 40px;
+  padding: 5px;
+  margin-top: -36px;
+  float: right;
+  background-color: white;
+  border-radius: 5px;
+}.french:hover{
+  cursor: pointer;
+}
+.delete{
+  margin-left: 280px;
+  padding: 5px;
+  margin-top: -34px;
+  float: left;
+  background-color: #ff605d;
+  color: white;
+  border-radius: 5px;
+}.delete:hover{
+  cursor: pointer;
+}
+#claims th {
+  padding: 10px;
+  font-weight: 400;
+  background-color: #bec0c1;
+  width: 10%;
+}
+.red{
+  background-color: #ff9898;
+}
+.green{
+  background-color: rgb(162, 239, 162);
+}
+.newClaimButton{
+  background-color: #ff605d;
+  float: right;
+  padding: 8px;
+  margin-top: -6px;
+  border-radius: 5px;
+  font-size: 15px;
+  border: 1px solid #dadada;
+  color: white;
+  font-weight: 100;
+  text-decoration: none;
+}
+.danger{
+  width: 20px;
+  margin-left: 10px;
+  margin-bottom: -5px;
+}
+.car {
+  text-decoration: underline;
+  color:blue;
+}.car:hover{
+  cursor: pointer;
+}
+.loading{
+  height: 100%;
+  width: 100%;
+  background-color: #eaeef0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+}
+.loading-image{
+  margin: auto;
+    display: block;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    width: 10%;
+    margin-top: 200px;
+
+}
+.line{
+  width: 95%;
+  margin-left: 0px;
+}
+.left{
+  width: 29.8%;
+  background-color: white;
+  height: 100%;
+  float: left;
+  border-right: 1px solid #cecece;
+  font-size: 13px;
+  overflow: scroll;
+}
+.right{
+  width: 70%;
+  float: right;
+}
+.answer1{
+  margin-left: 40px;
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  display: flex;
+}
+
+.innerBox{
+  margin:auto;
+  width:85%;
+}
+.chat{
+  padding:20px;
+  padding-left:40px;
+  padding-right:40px;
+}
+.chat-right{
+  text-align: right;
+  background-color: #e9ebef;
+  padding: 5px;
+  border-radius: 10px;
+}

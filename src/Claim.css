@@ -1,0 +1,67 @@
+.context-left{
+  width:250px;
+}
+.context-right{
+  text-align:center;
+}
+.context-title{
+  font-size:14px;
+  margin-bottom:20px;
+  margin-top: 10px;
+}
+.claim-answer{
+  margin-left: 35px;
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  display: flex;
+}
+.senti{
+  height: 180px;
+  margin-left: 35px;
+  margin-top: 20px;
+}
+.carpic{
+  border-radius: 10px;
+  width:200px;
+}
+.close{
+  height: 150px;
+  margin-right: 20px;
+  margin-top: -10px;
+  float: right;
+  font-size: 30px;
+}.close:hover{
+  cursor: pointer;
+}
+.sentiment-chart{
+  width: 100%;
+  height: 270px;
+  margin-top: -50px;
+}
+.cover{
+  background-color: white;
+  width: 600px;
+  height: 20px;
+  margin-top: -50px;
+  position: absolute;
+}
+.cover-short{
+  background-color: white;
+  width: 370px;
+  height: 20px;
+  margin-top: -50px;
+  position: absolute;
+}
+.context-chart{
+  width: 350px;
+  height: 220px;
+  margin-top: -30px;
+}
+.context-chart-new{
+  width: 330px;
+  height: 130px;
+  margin-top:40px;
+}
