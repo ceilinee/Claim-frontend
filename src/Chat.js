@@ -9,11 +9,9 @@ import danger from './danger.png';
 import up from './up.png';
 import down from './down.png';
 import icon from './icon.png';
-import university from './university.png';
 import card from './coverage card.jpg';
 import location from './location.JPG';
 import summary from './claim summary card.png';
-import car from './car.png';
 import senti from './senti.png';
 import App from './App';
 

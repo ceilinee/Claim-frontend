@@ -1,12 +1,12 @@
 .context-left{
-  width:250px;
+  width:220px;
 }
 .context-right{
   text-align:center;
 }
 .context-title{
   font-size:14px;
-  margin-bottom:20px;
+  margin-bottom:5px;
   margin-top: 10px;
 }
 .claim-answer{
@@ -16,7 +16,15 @@
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: left;
-  display: flex;
+  height: 200px;
+}
+.context-body{
+  margin-left: 12px;
+}
+.context-line{
+  margin-left: -40px;
+  color: white;
+  border: 1px solid #e8e8e8;
 }
 .senti{
   height: 180px;
@@ -25,7 +33,7 @@
 }
 .carpic{
   border-radius: 10px;
-  width:200px;
+  width:180px;
 }
 .close{
   height: 150px;
@@ -38,7 +46,7 @@
 }
 .sentiment-chart{
   width: 100%;
-  height: 270px;
+  height: 220px;
   margin-top: -50px;
 }
 .cover{
@@ -50,14 +58,14 @@
 }
 .cover-short{
   background-color: white;
-  width: 370px;
+  width: 380px;
   height: 20px;
   margin-top: -50px;
   position: absolute;
 }
 .context-chart{
-  width: 350px;
-  height: 220px;
+  width: 400px;
+  height: 200px;
   margin-top: -30px;
 }
 .context-chart-new{

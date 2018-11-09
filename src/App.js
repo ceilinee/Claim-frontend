@@ -8,11 +8,9 @@ import up from './up.png';
 import down from './down.png';
 import icon from './icon.png';
 import danger from './danger.png';
-import university from './university.png';
 import card from './coverage card.jpg';
 import location from './location.JPG';
 import summary from './claim summary card.png';
-import car from './car.png';
 import senti from './senti.png';
 import Claim from './Claim.js';
 var moment = require('moment');
@@ -36,6 +34,10 @@ class App extends Component {
       claimLoad: false,
       chatlist: [],
       imgURL: '',
+      damage: '',
+      fault: '',
+      multiple: '',
+      how: '',
     }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -54,24 +56,37 @@ class App extends Component {
       accept: "application/json",
     }).then((response) => response.json()).then(response => {
       this.setChat(response);
-    }).then(() => {this.fetchImage()});
-  }
-  fetchImage = () => {
-    fetch("https://claims-backend.herokuapp.com/users/image", {
-      accept: "application/json",
-    }).then((response) => response.json()).then(response => {
-      this.setImage(response);
     }).then(() => {this.flaskCall()});
-  }
-  setImage = (data) => {
-    console.log(data);
-    console.log(data[0].link);
-    this.setState({imgURL : data[0].link});
   }
   setChat = (data) => {
     var newdata = [];
-    for(var i = 0; i<data.length; i++){
-      var newObject = {"user": data[i].side, "message": data[i].content}
+    for(var i = 1; i<data.length; i++){
+      var newObject = {"user": data[i].side, "message": data[i].content, "type": data[i].type}
+      if(newObject.type == "link"){
+        this.setState({
+          imgURL : newObject.message
+        })
+      }
+      if(newObject.type == "damage"){
+        this.setState({
+          damage : newObject.message
+        })
+      }
+      if(newObject.type == "fault"){
+        this.setState({
+          fault : newObject.message
+        })
+      }
+      if(newObject.type == "multiple"){
+        this.setState({
+          multiple : newObject.message
+        })
+      }
+      if(newObject.type == "how"){
+        this.setState({
+          how : newObject.message
+        })
+      }
       newdata.push(newObject);
     }
     this.setState({
@@ -142,6 +157,10 @@ class App extends Component {
                     <Claim
                     key={claim.imgURL}
                     claim={claim}
+                    how={this.state.how}
+                    multiple={this.state.multiple}
+                    damage={this.state.damage}
+                    fault={this.state.fault}
                     refresh={() => {this.fetchClaims()}}
                   />
                 )}

@@ -10,12 +10,6 @@ import danger from "./danger.png";
 import up from "./up.png";
 import down from "./down.png";
 import icon from "./icon.png";
-import university from "./university.png";
-import card from "./coverage card.jpg";
-import location from "./location.JPG";
-import summary from "./claim summary card.png";
-import car from "./car.png";
-import senti from "./senti.png";
 import App from "./App";
 import Chat from "./Chat";
 import ChatFr from "./ChatFr";
@@ -79,25 +73,44 @@ export default class Claim extends React.Component {
                         <td>Policy No.:</td>
                         <td>AD983JF803</td>
                         <td></td>
+												<td></td>
                         <td>Accident Date:</td>
                         <td>{time}</td>
+												<td></td>
+												<td></td>
+												<td>Severity:</td>
+                        <td>1 - Severe</td>
                       </tr>
                       <tr>
                         <td>Claim No.:</td>
                         <td>0000416789</td>
                         <td></td>
+												<td></td>
                         <td>Filing Date:</td>
                         <td>{time}</td>
-                      </tr>
-                      <tr>
-                        <td>Severity:</td>
-                        <td>1 - Severe</td>
-                        <td></td>
-                        <td>Address:</td>
+												<td></td>
+												<td></td>
+												<td>Address:</td>
                         <td>Toronto, ON</td>
+                      </tr>
+											<tr>
+                        <td>Damage:</td>
+                        <td>{this.props.damage}</td>
+                        <td></td>
+												<td></td>
+                        <td>Fault:</td>
+                        <td>{this.props.fault}</td>
+												<td></td>
+												<td></td>
+												<td>Involved:</td>
+                        <td>{this.props.multiple}</td>
                       </tr>
                       </tbody>
                     </table>
+										<hr className="context-line"/>
+										<div className="context-body">
+											<p>Client Note: {this.props.how}</p>
+										</div>
                   </div>
                 <div className="box5">
                   <div className="title">
@@ -327,6 +340,7 @@ export default class Claim extends React.Component {
   render(){
 		var date = moment().format('L');
     // var time = date.substring(0,10);
+		console.log(this.props.damage);
 		return(
         <tr>
 					<td bgcolor="#ffb3b3">Pending Review</td>
