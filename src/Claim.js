@@ -309,7 +309,7 @@ export default class Claim extends React.Component {
       <div className="chat">
 				{this.props.claim.chatlist.map(chat =>
 						<Chat
-						key={chat.message}
+						key={chat.id}
 						chat={chat}
 					/>
 				)}
@@ -326,7 +326,7 @@ export default class Claim extends React.Component {
       <div className="chat">
 				{this.props.claim.translation.map(chat =>
 						<ChatFr
-						key={chat.message}
+						key={chat.id}
 						chat={chat}
 					/>
 				)}
@@ -348,8 +348,7 @@ export default class Claim extends React.Component {
           <td>1 - Severe <img className="danger" src={danger} alt="danger"/></td>
           <td>{date}</td>
           <td>{date}</td>
-          <td>Toronto, ON</td>
-					{this.state.open ? this.renderModal() : ""}
+          <td>Toronto, ON {this.state.open ? this.renderModal() : ""}</td>
         </tr>
 		    );
     }

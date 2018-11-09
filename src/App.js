@@ -60,8 +60,9 @@ class App extends Component {
   }
   setChat = (data) => {
     var newdata = [];
+    console.log(data);
     for(var i = 1; i<data.length; i++){
-      var newObject = {"user": data[i].side, "message": data[i].content, "type": data[i].type}
+      var newObject = {"id": data[i].idchatlog,"user": data[i].side, "message": data[i].content, "type": data[i].type}
       if(newObject.type == "link"){
         this.setState({
           imgURL : newObject.message
@@ -109,13 +110,21 @@ class App extends Component {
   }
   setClaims = (data) => {
     var newdata = data.data;
+    var translation = newdata.translation;
+    var translation_array = [];
     var array = [];
     var claims = {};
-    console.log(claims);
+    for(var i = 0; i<translation.length; i++) {
+      var user = translation[i].user;
+      var message = translation[i].message;
+      var new_translation = {"id": i, "user": user, "message": message};
+      translation_array.push(new_translation);
+    }
+    console.log(translation_array);
     claims.chatlist = this.state.chatlist;
     claims.imgURL = this.state.imgURL;
     claims.tone_sentiment = newdata.tone_sentiment;
-    claims.translation = newdata.translation;
+    claims.translation = translation_array;
     claims.visual = newdata.visual;
     array.push(claims);
     this.setState({
@@ -365,9 +374,9 @@ class App extends Component {
               <p className="selected" onClick = {() => {this.setState({home: true})}}>
                 Home
               </p>
-              <p className="selection" onClick = {() => {this.setState({home: false})}}>
+              <a href="https://claims-app-master.herokuapp.com/" className="selection">
                 Claims Portal
-              </p>
+              </a>
               <Link to={`/newClaim`} className="selection">
                 Forms
               </Link>
@@ -393,7 +402,7 @@ class App extends Component {
               <p className="selection" onClick = {() => {this.setState({home: true})}}>
                 Home
               </p>
-              <p className="selected" onClick = {() => {this.setState({home: false})}}>
+              <p className="selection" onClick = {() => {this.setState({home: false})}}>
                 Claims Portal
               </p>
               <Link to={`/newClaim`} className="selection">
@@ -478,7 +487,7 @@ class App extends Component {
       <div className="home-bar">
         <div className="home-status">
           Active Tasks
-          {this.state.claimLoad ? <div className="load-green"></div> : <div className="load-blue"></div>}
+          {this.state.claimLoad ? '' : <img src="https://i.imgur.com/PLCCxII.gif" className="load-blue"/>}
         </div>
         <div className="home-sort">
           Sort By: Recent
@@ -501,15 +510,6 @@ class App extends Component {
       );
     }
     else{
-        if(this.state.loading){
-          return (
-            <div className="loading">
-              {this.renderHeader()}
-              <img className="loading-image" src="https://static.wixstatic.com/media/a81fe2_93868a3c4045406aad83d16937851563~mv2.gif" alt="loading"/>
-            </div>
-          )
-        }
-        else{
         return (
           <div>
             {this.renderHeader()}
@@ -519,7 +519,6 @@ class App extends Component {
             </div>
           </div>
         );
-        }
     }
   }
 }
