@@ -61,7 +61,7 @@ class App extends Component {
   setChat = (data) => {
     var newdata = [];
     console.log(data);
-    for(var i = 1; i<data.length; i++){
+    for(var i = 0; i<data.length; i++){
       var newObject = {"id": data[i].idchatlog,"user": data[i].side, "message": data[i].content, "type": data[i].type}
       if(newObject.type == "link"){
         this.setState({
