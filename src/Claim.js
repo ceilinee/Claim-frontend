@@ -62,9 +62,6 @@ export default class Claim extends React.Component {
                     x
                     </div>
                   </div>
-									<div className="delete" onClick = {() => {this.deleteClaim()}}>
-										Delete
-									</div>
                 </div>
                   <div className="claim-answer">
                     <table id="policy">
@@ -107,10 +104,6 @@ export default class Claim extends React.Component {
                       </tr>
                       </tbody>
                     </table>
-										<hr className="context-line"/>
-										<div className="context-body">
-											<p>Client Note: {this.props.how}</p>
-										</div>
                   </div>
                 <div className="box5">
                   <div className="title">
@@ -126,7 +119,7 @@ export default class Claim extends React.Component {
 										</div>
 										<div className="context-right">
 												<div className="context-title">
-													Image Attributes
+													Vehicle Characterics
 												</div>
 												<div className="context-chart">
 												<ResponsiveBar
@@ -204,7 +197,6 @@ export default class Claim extends React.Component {
 															animate={true}
 															motionStiffness={90}
 															motionDamping={13}
-															maxValue={100}
 													/>
 													<div className="cover-short"/>
 													</div>
@@ -293,7 +285,6 @@ export default class Claim extends React.Component {
 										        animate={true}
 										        motionStiffness={90}
 										        motionDamping={15}
-														maxValue={100}
 										    />
 												<div className="cover"/>
 												</div>

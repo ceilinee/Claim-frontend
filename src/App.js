@@ -49,6 +49,7 @@ class App extends Component {
     this.fetchChat();
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+    //set timeout of 8 seconds for loading state
     setTimeout(() => this.setState({ loading: false }), 8000);
   }
   fetchChat = () => {
@@ -339,9 +340,6 @@ class App extends Component {
         <div className="box4">
           <div className="title">
             Bruce Wayne (42938472) - Active
-            <Link to={`/newClaim`} className="newClaimButton">
-              Start new claim
-            </Link>
           </div>
         </div>
         {this.renderClaimant()}
@@ -419,7 +417,7 @@ class App extends Component {
       <div className="banner">
         <h1 className="home-h1">Welcome to the agent portal</h1>
         <p className= "paragraph">
-          October 12th is our firm wide event on insurance do not forget to attend
+          October 12th is our firm wide event on insurance do not forget to attend!
         </p>
       </div>
     )
@@ -436,32 +434,6 @@ class App extends Component {
             <p className="home-text">Process this claim by Nov 30th this is a very urgent claim</p>
             </div>
           </div>
-          <div className="home-box-inner">
-            <div className="home-box-liner"/>
-            <img src="https://image.flaticon.com/icons/svg/1179/1179257.svg" alt="icon" className="home-icon"/>
-            <div className="home-box-title">
-            Mike Smith Claim
-            <p className="home-text">Process this claim by Nov 30th this is a very urgent claim</p>
-            </div>
-          </div>
-          <div className="home-box-inner">
-            <div className="home-box-liner"/>
-            <img src="https://image.flaticon.com/icons/svg/846/846325.svg" alt="icon" className="home-icon"/>
-            <div className="home-box-title">
-            Martin Jaimes Claim
-            <p className="home-text">Process this claim by Nov 30th this is a very urgent claim</p>
-            </div>
-          </div>
-        </div>
-        <div className="home-box">
-          <Link to={`/`} className="home-box-inner">
-            <div className="home-box-liner"/>
-            <img src="https://image.flaticon.com/icons/svg/68/68587.svg" alt="icon" className="home-icon"/>
-            <div className="home-box-title">
-            Bruce Wayne Claim
-            <p className="home-text">Process this claim by Nov 30th this is a very urgent claim</p>
-            </div>
-          </Link>
           <div className="home-box-inner">
             <div className="home-box-liner"/>
             <img src="https://image.flaticon.com/icons/svg/1179/1179257.svg" alt="icon" className="home-icon"/>
