@@ -12,7 +12,6 @@ import icon from './icon.png';
 import card from './coverage card.jpg';
 import location from './location.JPG';
 import summary from './claim summary card.png';
-import senti from './senti.png';
 import App from './App';
 
 export default class ChatFr extends React.Component {

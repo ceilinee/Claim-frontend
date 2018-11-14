@@ -11,7 +11,6 @@ import danger from './danger.png';
 import card from './coverage card.jpg';
 import location from './location.JPG';
 import summary from './claim summary card.png';
-import senti from './senti.png';
 import Claim from './Claim.js';
 var moment = require('moment');
 
@@ -52,8 +51,9 @@ class App extends Component {
     //set timeout of 8 seconds for loading state
     setTimeout(() => this.setState({ loading: false }), 8000);
   }
+  // https://claims-backend.herokuapp.com
   fetchChat = () => {
-    fetch("https://claims-backend.herokuapp.com/users/chat", {
+    fetch("http://localhost:3000/users/chat", {
       accept: "application/json",
     }).then((response) => response.json()).then(response => {
       this.setChat(response);
@@ -102,13 +102,15 @@ class App extends Component {
       "image_url": this.state.imgURL,
       "chat_body": this.state.chatlist
     })
-    axios.post("https://flaskendpoint.herokuapp.com/api/watson_helper", data, {
+    axios.post("http://127.0.0.1:5000/api/watson_helper", data, {
       headers: {
         "Content-Type": "application/json",
       }
     }
     ).then(response => this.setClaims(response));
   }
+  // http://127.0.0.1:5000
+  // https://flaskendpoint.herokuapp.com
   setClaims = (data) => {
     var newdata = data.data;
     var translation = newdata.translation;
