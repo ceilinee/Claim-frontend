@@ -424,7 +424,7 @@ class App extends Component {
               <p className="selected" onClick = {() => {this.setState({home: true})}}>
                 Home
               </p>
-              <a href="https://claims-app-master.herokuapp.com/" className="selection">
+              <a href="https://claims-frontend-dev.herokuapp.com/" className="selection">
                 Claims Portal
               </a>
               <Link to={`/newClaim`} className="selection">
