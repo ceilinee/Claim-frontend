@@ -33,38 +33,37 @@ export default class Chat extends React.Component {
       idNumber : num
     })
   }
-
-  renderChat = () => {
-    return(
-      <div className="chat">
-        <p className="chat-right">Hello</p>
-        <p>Hello! How can we help you today?</p>
-        <p className="chat-right">Check Coverage</p>
-        <p><img src={card} alt="card" className="card"/></p>
-        <p className="chat-right">I just got in an accident!</p>
-        <p>It sounds like you’ve had quite an adventurous day. </p>
-        <p>Lets start a new auto claim for you! Where did the accident occur?</p>
-        <p className="chat-right"><img src={location} alt="card" className="card"/></p>
-        <p>Was there another car or person involved in the accident?</p>
-        <p className="chat-right">yes</p>
-        <p>Oh no! That sounds bad.</p>
-        <p>Do you want to submit a picture to attach to the claim?</p>
-        <p className="chat-right">yes</p>
-        <p>Okay. Please use your camera to take a photo or select an existing photo.</p>
-        <p className="chat-right">yes</p>
-        <p>I have submitted a claim on your behalf. You can review the submitted information below. </p>
-        <p><img src={summary} alt="card" className="card"/></p>
-      </div>
-    )
-  }
-  render(){
-    var content = this.props.chat.message;
-    console.log(this.props.chat.message);
-		return(
-        <div>
-        {this.props.chat.user == "client" ? <p className="chat-right">{content}</p> : <p>{content}</p>}
-        </div>
-		);
+  render(){	
+			var content = this.props.chat.message;
+			console.log(this.props.chat.message);
+			if(this.props.chat.type == "coverage"){
+				return(
+					 <div>
+					 {this.props.chat.user == "client" ? <p className="chat-right"><img src={card} alt="card" className="card"/></p> : <p><img src={card} alt="card" className="card"/></p>}
+					 </div>
+				);
+			}
+			else if (this.props.chat.type == "location"){
+				return(
+					 <div>
+					 {this.props.chat.user == "client" ? <p className="chat-right"><img src={location} alt="card" className="card"/></p> : <p><img src={location} alt="card" className="card"/></p>}
+					 </div>
+				);
+			}
+			else if (this.props.chat.type == "link"){
+				return(
+					 <div>
+					 {this.props.chat.user == "client" ? <p className="chat-right"><img src={this.props.chat.message} alt="card" className="card"/></p> : <p><img src={this.props.chat.message} alt="card" className="card"/></p>}
+					 </div>
+				);
+			}
+			else{
+				return(
+					 <div>
+					 {this.props.chat.user == "client" ? <p className="chat-right">{content}</p> : <p>{content}</p>}
+					 </div>
+				);
+			}
     }
   }
   // renderFrChat = () => {

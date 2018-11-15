@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Lobster|Raleway:200,400,900|Roboto');
-
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800|Roboto:300,400,500,700,900');
 .App {
   text-align: center;
 }
@@ -233,11 +232,11 @@
 #policy td, #policy th {
   padding-left: 0px;
   padding-right:35px;
-  font-weight:400
+  font-weight:200
 }
 #issued td {
   padding: 7px;
-  font-weight:400;
+  font-weight:200;
 }
 #issued th {
   padding: 10px;

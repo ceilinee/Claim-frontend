@@ -1,0 +1,53 @@
+.Chart{
+  margin-top: 8px;
+  text-align: left;
+}
+.Chart-Label{
+  margin-right: 5px;
+  width: 150px;
+  text-align: right;
+  font-weight:100;
+}
+.Chart-bar-section{
+  background-color: #61ade4;
+  height: 15px;
+  width: 32px;
+  margin-right: 2px;
+  /* border: 3px solid #1e4f73; */
+  border-radius: 3px;
+  color: #61ade4;
+  margin-top: 3px;
+}
+.Chart-bar-section-grey{
+  background-color: #e6e8e8;
+  height: 15px;
+  width: 32px;
+  margin-right: 2px;
+  /* border: 3px solid #1e4f73; */
+  border-radius: 3px;
+  color: #61ade4;
+  margin-top: 3px;
+}
+.Chart-bar-section-long{
+  background-color: #61ade4;
+  height: 17px;
+  width: 57px;
+  margin-right: 2px;
+  /* border: 3px solid #1e4f73; */
+  border-radius: 3px;
+  color: #61ade4;
+  margin-top: 3px;
+}
+.Chart-bar-section-grey-long{
+  background-color: #e6e8e8;
+  height: 17px;
+  width: 57px;
+  margin-right: 2px;
+  /* border: 3px solid #1e4f73; */
+  border-radius: 3px;
+  color: #61ade4;
+  margin-top: 3px;
+}
+.Chart-Span{
+  display: flex;
+}
