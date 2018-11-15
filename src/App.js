@@ -111,7 +111,6 @@ class App extends Component {
   }
   setClaims = (data) => {
     var newdata = data.data;
-    var newdata = data;
     var translation = newdata.translation;
     var translation_array = [];
     var array = [];
