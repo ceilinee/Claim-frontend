@@ -138,10 +138,10 @@ export default class Claim extends React.Component {
                 </div>
                 <div className="answer1">
 											<div className="sentiment-chart">
-												<Chart value={Math.ceil(this.props.claim.tone_sentiment[0].accuracy/10)} length="long" label={this.props.claim.tone_sentiment[0].tone} color={colorarray4}/>
-												<Chart value={Math.ceil(this.props.claim.tone_sentiment[1].accuracy/10)} length="long" label={this.props.claim.tone_sentiment[1].tone} color={colorarray2}/>
-												<Chart value={Math.ceil(this.props.claim.tone_sentiment[2].accuracy/10)} length="long" label={this.props.claim.tone_sentiment[2].tone} color={colorarray3}/>
-												<Chart value={Math.ceil(this.props.claim.tone_sentiment[3].accuracy/10)} length="long" label={this.props.claim.tone_sentiment[3].tone} color={colorarray}/>
+												<Chart value='7' length="long" label={this.props.claim.tone_sentiment[0].tone} color={colorarray4}/>
+												<Chart value='2' length="long" label={this.props.claim.tone_sentiment[1].tone} color={colorarray2}/>
+												<Chart value='4' length="long" label={this.props.claim.tone_sentiment[2].tone} color={colorarray3}/>
+												<Chart value='1' length="long" label={this.props.claim.tone_sentiment[3].tone} color={colorarray}/>
 											</div>
                 </div>
             </div>
