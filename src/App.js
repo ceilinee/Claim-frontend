@@ -99,8 +99,7 @@ class App extends Component {
       "image_url": this.state.imgURL,
       "chat_body": this.state.chatlist
     })
-    "https://flaskendpoint.herokuapp.com/api/watson_helper"
-    axios.post("http://127.0.0.1:5000/api/watson_helper", data, {
+    axios.post("https://flaskendpoint.herokuapp.com/api/watson_helper", data, {
       headers: {
         "Content-Type": "application/json",
       }
