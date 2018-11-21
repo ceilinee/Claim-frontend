@@ -44,56 +44,69 @@ class App extends Component {
     console.log('Event: ', e);
     console.log('Data: ', data);
   };
+  //Calls these functions after main render function
   componentDidMount() {
     this.fetchChat();
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
     setTimeout(() => this.setState({ loading: false }), 8000);
   }
+  //Sends request to backend to fetch chatlog, sends response to setChat() before calling flaskCall()
   fetchChat = () => {
-    fetch("https://claims-backend.herokuapp.com/users/chat", {
+    fetch("http://claims-backend.herokuapp.com/users/chat", {
       accept: "application/json",
     }).then((response) => response.json()).then(response => {
       this.setChat(response);
     }).then(() => {this.flaskCall()});
   }
+  //Processes the chatlog and identifies values of different types of chats
   setChat = (data) => {
+    //Initiates empty array
     var newdata = [];
-    console.log(data);
+    //Searches the chatlog for types of chats
     for(var i = 0; i<data.length; i++){
+      //Constructs a new object containing an id, user, message and type
       var newObject = {"id": i,"user": data[i].side, "message": data[i].content, "type": data[i].type}
+      //Records value of type "link" chats
       if(newObject.type == "link"){
         this.setState({
           imgURL : newObject.message
         })
       }
+      //Records value of type "damage" chats
       if(newObject.type == "damage"){
         this.setState({
           damage : newObject.message
         })
       }
+      //Records value of type "fault" chats
       if(newObject.type == "fault"){
         this.setState({
           fault : newObject.message
         })
       }
+      //Records value of type "multiple" chats
       if(newObject.type == "multiple"){
         this.setState({
           multiple : newObject.message
         })
       }
+      //Records value of type "how" chats
       if(newObject.type == "how"){
         this.setState({
           how : newObject.message
         })
       }
+      //pushes newObject into newdata
       newdata.push(newObject);
     }
+    //Set value of this.state.chatlist to newdata
     this.setState({
       chatlist : newdata,
     })
-    console.log(this.state.chatlist);
   }
+  //Makes call to flask server with data containing imgURL and chatlist
+  //Sends response to flask server with data containing imgURL and chatlist
   flaskCall = () => {
     let data = JSON.stringify({
       "image_url": this.state.imgURL,
@@ -105,73 +118,79 @@ class App extends Component {
       }
     }
     ).then(response => this.setClaims(response));
-    // var response = {'visual': [{'class': 'car bomb', 'accuracy': 55.6, 'type_hierarchy': '/explosive device/bomb/car bomb'}, {'class': 'bomb', 'accuracy': 55.6, 'type_hierarchy': null}, {'class': 'explosive device', 'accuracy': 55.6, 'type_hierarchy': null}, {'class': 'van', 'accuracy': 54.1, 'type_hierarchy': '/vehicle/wheeled vehicle/truck/van'}, {'class': 'truck', 'accuracy': 67.0, 'type_hierarchy': null}, {'class': 'wheeled vehicle', 'accuracy': 74.3, 'type_hierarchy': null}, {'class': 'vehicle', 'accuracy': 74.9, 'type_hierarchy': null}, {'class': 'Light Truck', 'accuracy': 50.0, 'type_hierarchy': '/vehicle/wheeled vehicle/truck/Light Truck'}, {'class': 'car', 'accuracy': 52.2, 'type_hierarchy': '/vehicle/wheeled vehicle/car'}, {'class': 'coal black color', 'accuracy': 85.2, 'type_hierarchy': null}, {'class': 'charcoal color', 'accuracy': 52.8, 'type_hierarchy': null}], 'tone_sentiment': [{'tone': 'Anger', 'accuracy': 8.43}, {'tone': 'Disgust', 'accuracy': 3.94},{'tone':'Fear', 'accuracy': 5.13}, {'tone': 'Joy', 'accuracy': 6.98}, {'tone': 'Sadness', 'accuracy': 16.38}], 'translation': [{'user': 'client', 'message': 'Bonjour'}, {'user': 'bot', 'message': "Bonjour ! Comment pouvons-nous vous aider aujourd'hui?"}, {'user': 'client', 'message': 'Vérifier la couverture '}, {'user': 'bot', 'message': 'Graphique de la carte de couverture'},{'user': 'bot', 'message': 'Comment cela a-il eu lieu?'}, {'user': 'client', 'message': 'Je suis tombé'}, {'user': 'bot', 'message': "Très désolé d'entendre ça."}, {'user': 'bot', 'message': "Où l'accident a-il eu lieu?"}, {'user': 'client', 'message': 'Toronto (Ontario)'}, {'user': 'bot', 'message': "Y avait-il une autre voiture ouune autre personne impliquée dans l'accident?"}, {'user': 'client', 'message': 'Oui'}, {'user': 'bot', 'message': 'Oh non ! Ça semble mauvais.'}, {'user': 'bot', 'message': 'Voulez-vous soumettre une image à joindre à la réclamation?'}, {'user': 'client', 'message': 'Oui'}, {'user': 'bot', 'message': 'Ok. Veuillez utiliser votre appareil photo pour prendre une photo ou sélectionner une photo existante.'}, {'user': 'client', 'message': 'Https://i.imgur.com/hz8ii7y.jpg'}, {'user': 'bot', 'message': 'Où ont eu lieu les dommages?'}, {'user': 'client', 'message': ' Fenêtre'}, {'user': 'bot', 'message': 'Qui était responsable?'}, {'user': 'client', 'message': 'Principal '}, {'user': 'bot', 'message': "D'accord, j'ai présenté une demande en votre nom. Vous pouvez consulter les informations fournies ci-dessous."}]};
+    // var response = {'visual': [{'class': 'car bomb', 'accuracy': 55.6, 'type_hierarchy': '/explosive device/bomb/car bomb'}, {'class': 'bomb', 'accuracy': 55.6, 'type_hierarchy': null}, {'class': 'explosive device', 'accuracy': 55.6, 'type_hierarchy': null}, {'class': 'van', 'accuracy': 54.1, 'type_hierarchy': '/vehicle/wheeled vehicle/truck/van'}, {'class': 'truck', 'accuracy': 67.0, 'type_hierarchy': null}, {'class': 'wheeled vehicle', 'accuracy': 74.3, 'type_hierarchy': null}, {'class': 'vehicle', 'accuracy': 74.9, 'type_hierarchy': null}, {'class': 'Light Truck', 'accuracy': 50.0, 'type_hierarchy': '/vehicle/wheeled vehicle/truck/Light Truck'}, {'class': 'car', 'accuracy': 52.2, 'type_hierarchy': '/vehicle/wheeled vehicle/car'}, {'class': 'coal black color', 'accuracy': 85.2, 'type_hierarchy': null}, {'class': 'charcoal color', 'accuracy': 52.8, 'type_hierarchy': null}], 'tone_sentiment': [{'tone': 'Anger', 'accuracy': 80.43}, {'tone': 'Disgust', 'accuracy': 30.94},{'tone':'Fear', 'accuracy': 5.13}, {'tone': 'Joy', 'accuracy': 60.98}, {'tone': 'Sadness', 'accuracy': 90.38}], 'translation': [{'user': 'client', 'message': 'Bonjour'}, {'user': 'bot', 'message': "Bonjour ! Comment pouvons-nous vous aider aujourd'hui?"}, {'user': 'client', 'message': 'Vérifier la couverture '}, {'user': 'bot', 'message': 'Graphique de la carte de couverture'},{'user': 'bot', 'message': 'Comment cela a-il eu lieu?'}, {'user': 'client', 'message': 'Je suis tombé'}, {'user': 'bot', 'message': "Très désolé d'entendre ça."}, {'user': 'bot', 'message': "Où l'accident a-il eu lieu?"}, {'user': 'client', 'message': 'Toronto (Ontario)'}, {'user': 'bot', 'message': "Y avait-il une autre voiture ouune autre personne impliquée dans l'accident?"}, {'user': 'client', 'message': 'Oui'}, {'user': 'bot', 'message': 'Oh non ! Ça semble mauvais.'}, {'user': 'bot', 'message': 'Voulez-vous soumettre une image à joindre à la réclamation?'}, {'user': 'client', 'message': 'Oui'}, {'user': 'bot', 'message': 'Ok. Veuillez utiliser votre appareil photo pour prendre une photo ou sélectionner une photo existante.'}, {'user': 'client', 'message': 'Https://i.imgur.com/hz8ii7y.jpg'}, {'user': 'bot', 'message': 'Où ont eu lieu les dommages?'}, {'user': 'client', 'message': ' Fenêtre'}, {'user': 'bot', 'message': 'Qui était responsable?'}, {'user': 'client', 'message': 'Principal '}, {'user': 'bot', 'message': "D'accord, j'ai présenté une demande en votre nom. Vous pouvez consulter les informations fournies ci-dessous."}]};
     // this.setClaims(response);
   }
+  //Processes and organizes the responses and identifies repeated visual classes
   setClaims = (data) => {
-    var newdata = data.data;
+    // var newdata = data.data;
+    var newdata = data;
+    //Initiates variable, sets variable value
     var translation = newdata.translation;
+    //Initiates array
     var translation_array = [];
+    //Initiates array
     var array = [];
+    //Initiates object
     var claims = {};
+    //Adds id and type to each translation element, pushes to translation_array
     for(var i = 0; i<translation.length; i++) {
       var user = translation[i].user;
       var message = translation[i].message;
       var new_translation = {"id": this.state.chatlist[i].id, "user": user, "message": message, "type": this.state.chatlist[i].type};
       translation_array.push(new_translation);
     };
-    console.log(translation_array);
+    //Initiates variable, sets variable value
     var visual = newdata.visual;
+    //Initiates array
     var type_array = [];
+    //Identifies elements with type_hierarchy, pushes them to type_array and splits type_hierarchy by "/" into an array
     for(var i = 0; i<visual.length; i++) {
+      //Identifies elements with type_hierarchy
       if(visual[i].type_hierarchy){
-        console.log(visual[i]);
-        type_array.push(visual[i]);
+        //splits type_hierarchy by "/" into an array
+        var individual_type = visual[i].type_hierarchy.split('/');
+        //Initiates object
+        var new_type = {};
+        new_type.class = (visual[i].class);
+        new_type.accuracy = (visual[i].accuracy);
+        new_type.type_hierarchy = (individual_type);
+        //Push new_type into type_array
+        type_array.push(new_type);
+        //Delete element with type_hierarchy from visual
         visual.splice(i,1);
-        console.log(visual);
+        i--;
       }
     };
-    var type_array_collection = [];
+    //Checks elements in type_array against each other to eliminate duplicates
     for(var i = 0; i<type_array.length; i++) {
-      var individual_type = type_array[i].type_hierarchy.split('/');
-      var new_type = {};
-      new_type.class = (type_array[i].class);
-      new_type.accuracy = (type_array[i].accuracy);
-      new_type.type_hierarchy = (individual_type);
-      console.log(new_type);
-      type_array_collection.push(new_type);
-      console.log(type_array_collection);
-    };
-    for(var i = 0; i<type_array_collection.length; i++) {
-      console.log("hi");
-      for(var j = 0; j<type_array_collection.length; j++) {
-        if(j==i){
-          console.log("same");
-        }
-        else{
-          console.log(type_array_collection[i].type_hierarchy[1]);
-          if(type_array_collection[i].type_hierarchy[1] == type_array_collection[j].type_hierarchy[1]){
-            if(type_array_collection[i].type_hierarchy[1] == type_array_collection[j].type_hierarchy[1]){
-              if(type_array_collection[i].accuracy>type_array_collection[j].accuracy){
-                type_array_collection.splice(j,1);
-                console.log(type_array_collection);
-              }
-              else{
-                type_array_collection.splice(i,1);
-                console.log(type_array_collection);
-              }
+      for(var j = 0; j<type_array.length; j++) {
+        //If j doesn't equal i
+        if(j!=i){
+          //If the 2nd
+          if(type_array[i].type_hierarchy[1] == type_array[j].type_hierarchy[1]){
+            if(type_array[i].accuracy>type_array[j].accuracy){
+              type_array.splice(j,1);
+              console.log(type_array);
+            }
+            else{
+              type_array.splice(i,1);
+              console.log(type_array);
             }
           }
         }
       }
     }
-    for(var i = 0; i<type_array_collection.length; i++){
-      visual.push(type_array_collection[i]);
+    //Push everything in type_array onto visual
+    for(var i = 0; i<type_array.length; i++){
+      visual.push(type_array[i]);
     }
+    //Sort visual in order of Certainty
     visual.sort(function(a, b) {
       return b.accuracy - a.accuracy;
     });
     console.log(visual);
+    //set Claims values
     claims.chatlist = this.state.chatlist;
     claims.imgURL = this.state.imgURL;
     claims.tone_sentiment = newdata.tone_sentiment;
@@ -190,7 +209,10 @@ class App extends Component {
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
+  //Displays static claims
+  //For each item on Claimlist array, calls Claim and gives properties and renders them above the static claims
   renderClaims = () => {
+    //Uses moment to get current time in MM/DD/YYYY format
     var time = moment().format("MM/DD/YYYY");
     return(
       <div>
@@ -257,7 +279,7 @@ class App extends Component {
   //   <td>{time}</td>
   //   <td>Toronto, ON</td>
   // </tr>
-
+  //if user clicks on claim, claim either expands or minimizes depending on current value
   clickClaim = () => {
     console.log("CLicked");
     if(this.state.claim){
@@ -272,6 +294,7 @@ class App extends Component {
     }
     console.log(this.state.claim);
   }
+  //if user clicks on claimant, claimant either expands or minimizes depending on current value
   clickClaimant = () => {
     console.log("CLicked");
     if(this.state.claimant){
@@ -286,6 +309,7 @@ class App extends Component {
     }
     console.log(this.state.claimant);
   }
+  //if user clicks on issued, issued either expands or minimizes depending on current value
   clickIssued = () => {
     if(this.state.issued){
       this.setState({
@@ -298,6 +322,7 @@ class App extends Component {
       });
     }
   }
+  //Renders static claimant bar
   renderClaimant = () => {
     return(
       <div>
@@ -342,6 +367,7 @@ class App extends Component {
       </div>
     )
   }
+  //Renders static issued bar
   renderIssued = () => {
     return(
       <div>
@@ -365,7 +391,7 @@ class App extends Component {
                   <th>Expiry</th>
                 </tr>
                 <tr>
-                  <td><a className="car" onClick = {() => {this.changePage()}}>Lamborgini</a></td>
+                  <td><a className="car">Lamborgini</a></td>
                   <td>Active</td>
                   <td>1</td>
                   <td>AD983JF803</td>
@@ -381,9 +407,7 @@ class App extends Component {
       </div>
     )
   }
-  // {this.state.users.map(user =>
-  //   <div key={user.idUsers}>{user.email}</div>
-  // )}
+  //Contains Claimant, Issued, Claims
   renderInformation = () => {
     return(
       <div className="innerBox">
@@ -398,12 +422,9 @@ class App extends Component {
       </div>
     )
   }
-  changePage = () => {
-    this.setState({
-      page: "Car",
-    })
-    console.log("HIIII");
-  }
+  //Renders different headers depending on this.state.home
+  //if true then home appears as selected and claims link leads to static site
+  //if false claim portal appears as selected
   renderHeader = () => {
     if(this.state.home){
       return(
@@ -462,6 +483,7 @@ class App extends Component {
         )
     }
   }
+  //Renders Welcome Banner on Home page
   renderBanner = () => {
     return(
       <div className="banner">
@@ -472,6 +494,7 @@ class App extends Component {
       </div>
     )
   }
+  //Renders to-do tasks on Home page
   renderBoxes = () => {
     return(
       <div>
@@ -504,6 +527,7 @@ class App extends Component {
       </div>
     )
   }
+  //Renders Active tasks title and "sort by" on Home page
   renderBar = () => {
     return(
       <div className="home-bar">
@@ -518,6 +542,9 @@ class App extends Component {
       </div>
     )
   }
+  //Main render function
+  //if home is true then renders homepage
+  //else claims portal is rendered
   render() {
     if(this.state.home){
       return (
